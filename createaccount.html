@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Confidentials</title>
+        <!--<script type="text/javascript" src="js/jquery-1.10.2.min.js" > </script>
+        <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js" /></script>-->
+        <!--Standford Javscript Encryption Library-->
+        <script type="text/javascript" src="js/sjcl.js">  </script>
+        <script type="text/javascript" src="js/core.js">  </script>
+        <script type="text/javascript" src="js/common.js">  </script>
+        <!--<link rel="stylesheet" type="text/css" href="theme/jquery.mobile-1.3.2.min.css" />-->
+        <script type="text/javascript" >
+            function create() {
+                var name = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var email = document.getElementById("email").value;
+                var user = new core.User(name, email, password);
+                var req = core.createUser(user);
+                req.onsuccess = function (event) {
+                    alert("User created : " + event.target.result.name);
+                }
+                req.onerror = function(event) {
+                    alert("Error on creating user");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <table style="width:100%; height:100%">
+            <tr>
+                <td align="center" valign="top">
+                        <table style="border: 1px solid black; padding: 20px; margin-top:15%; border-radius:20px; height:300px">
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <h2>Create Account</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Name : 
+                                </td>
+                                <td>
+                                    <input id="username" type="text" name="username" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email : 
+                                </td>
+                                <td>
+                                    <input id="email" type="email" name="email" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Password : 
+                                </td>
+                                <td>
+                                    <input id="password" type="password" name="passwd" />
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td colspan="2" align="center">
+                                    <input type="button" value="Create" onclick="create()"/>
+                                </td>
+                            </tr>
+                        </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top">
+                    <div id="usersList" style="width:400px; border: 1px solid black"></div>
+                    <script type="text/javascript" >
+                        core.getUsers(function(users) {
+                            var divUser = document.getElementById("usersList");
+                            var temp = "<ul>";
+                            
+                            for (var i = 0; i < users.length; i++) {
+                                temp = temp + "<li>" + users[i].id+ "</li>";
+                            }
+                            divUser.innerHTML = temp + "</ul>";
+                        });
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
