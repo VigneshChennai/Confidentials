@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Enter your title here</title>
+        <link rel="stylesheet" type="text/css" href="" />
+        <script type="text/javascript">
+        function randomColor() {
+            var x=Math.round(0xffffff * Math.random()).toString(16);
+            var y=(6-x.length);
+            var z="000000";
+            var z1 = z.substring(0,y);
+            var color= "#" + z1 + x;
+            return color;
+        }
+        </script>
+
+    </head>
+    
+    <body style="background-image:url('theme/bg.jpg');">
+        <table id="colorbg"  style="width:100%; height: 100%; " cellspacing="0">
+            <tr>
+                <td style="width:100%; height: 100%; ">
+                </td>
+            </tr>
+        </table>
+        <!--<script type="text/javascript">
+            var temp = "";
+            for(var i=0; i <100; i++) {
+                temp = temp + "<tr>";
+                for(var j=0; j<20; j++) {
+                    var color = randomColor();
+                    temp = temp + "<td style=\"background-color:" + color + "; width:40px; height:20px\"></td>";
+                }
+                temp = temp + "</tr>";
+            }
+            document.getElementById("colorbg").innerHTML = temp;
+        </script>-->
+        
+    </body>
+</html>
